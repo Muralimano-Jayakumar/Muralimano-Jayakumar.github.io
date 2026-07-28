@@ -22,6 +22,7 @@ body {
   background: var(--navy);
   color: var(--paper);
   font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+  transition: background-color 220ms ease, color 220ms ease;
 }
 
 .motion-ready .impact-story,
@@ -130,12 +131,46 @@ a {
 }
 
 .nav-cta {
-  justify-self: end;
   padding: 0.8rem 1.1rem;
   border: 1px solid var(--line);
   border-radius: 0.5rem;
   font-size: 0.9rem;
   transition: border-color 180ms ease, background 180ms ease;
+}
+
+.nav-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  border-color: var(--cyan);
+  background: rgba(57, 217, 255, 0.08);
+}
+
+.theme-toggle-icon {
+  color: var(--cyan);
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .nav-cta:hover,
@@ -615,11 +650,28 @@ a {
   line-height: 1.15;
 }
 
-.achievement-card > p:last-child {
+.achievement-card > p:last-of-type {
   max-width: 35rem;
   color: var(--muted);
   font-size: 0.92rem;
   line-height: 1.75;
+}
+
+.achievement-link {
+  display: inline-flex;
+  gap: 0.45rem;
+  margin-top: 1.25rem;
+  color: var(--cyan);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.achievement-link:hover,
+.achievement-link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
 }
 
 .initiatives {
@@ -983,6 +1035,87 @@ footer p:last-child {
   justify-self: end;
 }
 
+html[data-theme="light"] {
+  --navy: #f5f8fa;
+  --navy-soft: #e9f0f4;
+  --paper: #102433;
+  --muted: #526979;
+  --cyan: #007b98;
+  --lime: #547a00;
+  --line: rgba(0, 103, 128, 0.24);
+  --line-soft: rgba(42, 74, 92, 0.18);
+}
+
+html[data-theme="light"] .hero,
+html[data-theme="light"] .section-experience {
+  background-color: var(--navy);
+}
+
+html[data-theme="light"] .section-impact,
+html[data-theme="light"] .section-about {
+  background: #edf3f6;
+}
+
+html[data-theme="light"] .section-writing {
+  background:
+    radial-gradient(circle at 15% 30%, rgba(84, 122, 0, 0.08), transparent 24rem),
+    #f1f6f8;
+}
+
+html[data-theme="light"] .section-systems {
+  background: #102433;
+  color: #f3f7fa;
+}
+
+html[data-theme="light"] .section-systems .section-kicker,
+html[data-theme="light"] .system-index {
+  color: #5edfff;
+}
+
+html[data-theme="light"] .systems-lead > p:last-child,
+html[data-theme="light"] .system-group li {
+  color: #b5c6d1;
+}
+
+html[data-theme="light"] .systems-grid {
+  border-color: rgba(197, 220, 232, 0.28);
+}
+
+html[data-theme="light"] .system-group {
+  border-color: rgba(197, 220, 232, 0.28);
+}
+
+html[data-theme="light"] .system-group li {
+  border-color: rgba(197, 220, 232, 0.2);
+}
+
+html[data-theme="light"] .achievement-card {
+  background: rgba(255, 255, 255, 0.52);
+}
+
+html[data-theme="light"] .achievement-card:hover {
+  background: rgba(0, 123, 152, 0.07);
+}
+
+html[data-theme="light"] .tag-row span,
+html[data-theme="light"] .initiatives > div p,
+html[data-theme="light"] .timeline-item li,
+html[data-theme="light"] .article-tags span {
+  color: #36505f;
+}
+
+html[data-theme="light"] .portrait-frame {
+  background: rgba(245, 248, 250, 0.76);
+  box-shadow:
+    0 0 0 0.75rem rgba(0, 123, 152, 0.04),
+    0 2rem 5rem rgba(20, 50, 68, 0.18),
+    0 0 4rem rgba(0, 123, 152, 0.12);
+}
+
+html[data-theme="light"] .portrait-index {
+  background: rgba(245, 248, 250, 0.94);
+}
+
 @keyframes reveal {
   from { opacity: 0; transform: translateY(1rem); }
   to { opacity: 1; transform: translateY(0); }
@@ -1081,6 +1214,10 @@ footer p:last-child {
   .nav-cta {
     font-size: 0.78rem;
     padding: 0.65rem 0.75rem;
+  }
+
+  .theme-toggle-label {
+    display: none;
   }
 
   .hero-copy {
