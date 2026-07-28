@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://muralimano-jayakumar.github.io/sitemap.xml
